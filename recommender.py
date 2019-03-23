@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 
 features = ["Comedy","Drama","Action","Romance","Adventure","Thriller","Crime","Fantasy","Children","Animation","Sci-Fi","Horror","Mystery","IMAX","Musical","Documentary","War","Western","(no genres listed)",
             "Todd Phillips","Dennis Dugan","Peter Farrelly","Jay Roach","Frank Coraci",
