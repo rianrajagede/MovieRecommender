@@ -1,8 +1,12 @@
+"""
+
+"""
+
 import pandas as pd
 import numpy as np
 import csv
 
-data = pd.read_csv("datanot1718.csv")
+data = pd.read_csv("formatted_data/data_train_111.csv")
 
 # Get Actor Features
 actor_list = "|".join(data["actors"].values)

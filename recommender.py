@@ -5,8 +5,8 @@ features = ["Comedy","Drama","Action","Romance","Adventure","Thriller","Crime","
             "Todd Phillips","Dennis Dugan","Peter Farrelly","Jay Roach","Frank Coraci",
             "Adam Sandler","Will Ferrell","Johnny Depp","Jim Carrey","Vince Vaughn","Ben Stiller","Robert De Niro","Paul Rudd","Jennifer Aniston","Jack Black","Drew Barrymore","Cameron Diaz"]
 
-data = pd.read_csv("datanot1718.csv")
-datatest = pd.read_csv("data1718.csv")
+data = pd.read_csv("formatted_data/data_train_111.csv")
+datatest = pd.read_csv("formatted_data/data_test_111.csv")
 data["userRating"] = pd.to_numeric(data["userRating"])
 
 # Reformat data menjadi Table Fitur

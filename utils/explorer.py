@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import csv
 import numpy as np
 
@@ -12,7 +16,7 @@ def load_csv(file_name):
 
 # Load csv files
 ratings = load_csv("movie_lens_data/ratings.csv")[1:]
-movies1718 = load_csv("movies1718.csv")
+movies1718 = load_csv("formatted_data/movies1718_all.csv")
 idmovies1718 = movies1718[:,0]
 
 # Mencari user yang cocok untuk dijadikan contoh

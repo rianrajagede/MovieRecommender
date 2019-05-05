@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import csv
 import numpy as np
 import requests
@@ -36,7 +40,7 @@ def write_csv(file_name, data):
             writer.writerow(d)
 
 def find_imdb_id(movie_id):
-    link = load_csv("links.csv")[1:]
+    link = load_csv("movie_lens_data/links.csv")[1:]
     for data in link:
         if data[0]==movie_id:
             return data[1]
@@ -44,7 +48,7 @@ def find_imdb_id(movie_id):
 # Load csv files
 ratings = load_csv("movie_lens_data/ratings.csv")[1:]
 movies = load_csv("movie_lens_data/movies.csv")[1:]
-movies1718 = load_csv("movies1718.csv")
+movies1718 = load_csv("formatted_data/movies1718_all.csv")
 idmovies1718 = movies1718[:,0]
 
 # Berdasarkan file explorer.py
