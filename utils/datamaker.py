@@ -51,7 +51,7 @@ movies = load_csv("movie_lens_data/movies.csv")[1:]
 movies1718 = load_csv("formatted_data/movies1718_all.csv")
 idmovies1718 = movies1718[:,0]
 
-# Berdasarkan file explorer.py
+# We choose user 111 based on explorer.py
 selected_user = "111"
 
 datanot1718 = []
@@ -66,7 +66,6 @@ for user in ratings:
                 row += getdiract(imdb_id)
                 datanot1718.append(row)
                 break
-
 # write_csv("datanot1718.csv", datanot1718)
 
 data1718 = []
@@ -81,7 +80,6 @@ for user in ratings:
                 row += getdiract(imdb_id)
                 data1718.append(row)
                 break
-
 # write_csv("data1718.csv", data1718)
 
 

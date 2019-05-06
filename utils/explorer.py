@@ -19,10 +19,10 @@ ratings = load_csv("movie_lens_data/ratings.csv")[1:]
 movies1718 = load_csv("formatted_data/movies1718_all.csv")
 idmovies1718 = movies1718[:,0]
 
-# Mencari user yang cocok untuk dijadikan contoh
-totrat = [0]*611 # total rating tiap user untuk semua film
-m17rat = [0]*611 # total rating tiap user untuk film 2017-2018
-updateduser = [] # daftar user yang pernah merating film 2017-2018
+# Find the best user to be picked for this case
+totrat = [0]*611 # number of rating for each user for movies before 2017
+m17rat = [0]*611 # number of rating for each user for movies between 2017-2018
+updateduser = [] # list of user ids who rate movies between 2017-2018
 for user in ratings:
     totrat[int(user[0])] += 1
     if user[1] in idmovies1718:
@@ -30,14 +30,8 @@ for user in ratings:
         m17rat[int(user[0])] += 1
 updateduser = set(updateduser)
 
-# print(sorted(m17rat))
-print("Banyak user update :", len(updateduser))
+print("Total user who rate 2017-2018 movies :", len(updateduser))
 print()
-print("1st")
-print("Rating film(2017-2018) paling banyak:", sorted(m17rat)[-1], "rating oleh user", m17rat.index(sorted(m17rat)[-1]))
-print("Total rating user", m17rat.index(sorted(m17rat)[-1]), ":", totrat[m17rat.index(sorted(m17rat)[-1])])
-print()
-print("2nd")
-print("Rating film(2017-2018) paling banyak:", sorted(m17rat)[-2], "rating oleh user", m17rat.index(sorted(m17rat)[-2]))
-print("Total rating user", m17rat.index(sorted(m17rat)[-2]), ":", totrat[m17rat.index(sorted(m17rat)[-2])])
+print("The most of the given rating (2017-2018):", sorted(m17rat)[-1], "by", m17rat.index(sorted(m17rat)[-1]))
+print("rating ratio movies (2017-2018) compared to all movies rated", m17rat.index(sorted(m17rat)[-1]), ":", totrat[m17rat.index(sorted(m17rat)[-1])])
 

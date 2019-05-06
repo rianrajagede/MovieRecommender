@@ -9,7 +9,7 @@ data = pd.read_csv("formatted_data/data_train_111.csv")
 datatest = pd.read_csv("formatted_data/data_test_111.csv")
 data["userRating"] = pd.to_numeric(data["userRating"])
 
-# Reformat data menjadi Table Fitur
+# formatting data to become user x movies matrix
 def reformat(data, features):
     for i,f in enumerate(features):
         data[f] = 0.0
@@ -29,13 +29,13 @@ def reformat(data, features):
 data = reformat(data, features)
 datatest = reformat(datatest, features)
 
-# Mengalikan Bobot Fitur dengan User Rating
+# Multiply features weight by User Rating
 for f in features:
     data[f] *= data["userRating"]
 
 data.to_csv("fitur_item.csv", sep=',',encoding='utf-8', index=False)
 
-# Mendapatkan User Profile
+# Get User Profile
 user_profile = data.loc[:,"Comedy":].sum(axis=0)                     
 user_profile = user_profile / user_profile.sum()
 print(user_profile)                        
