@@ -1,12 +1,17 @@
 """
+Used to see the general statistic of the data train
 
+output of this program will show you:
+- the most actor that appear on the rated movies
+- the most director that direct the rated movies
+- the most genres of the rated movies
 """
 
 import pandas as pd
 import numpy as np
 import csv
 
-data = pd.read_csv("formatted_data/data_train_111.csv")
+data = pd.read_csv("../formatted_data/data_train_111.csv")
 
 # Get Actor Features
 actor_list = "|".join(data["actors"].values)

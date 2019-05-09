@@ -1,5 +1,6 @@
 """
-
+Used to create data train and data test with
+additional features (directors, actors, and imdb rating)
 """
 
 import csv
@@ -46,9 +47,9 @@ def find_imdb_id(movie_id):
             return data[1]
 
 # Load csv files
-ratings = load_csv("movie_lens_data/ratings.csv")[1:]
-movies = load_csv("movie_lens_data/movies.csv")[1:]
-movies1718 = load_csv("formatted_data/movies1718_all.csv")
+ratings = load_csv("../movie_lens_data/ratings.csv")[1:]
+movies = load_csv("../movie_lens_data/movies.csv")[1:]
+movies1718 = load_csv("../formatted_data/movies1718_all.csv")
 idmovies1718 = movies1718[:,0]
 
 # We choose user 111 based on explorer.py
@@ -66,7 +67,7 @@ for user in ratings:
                 row += getdiract(imdb_id)
                 datanot1718.append(row)
                 break
-# write_csv("datanot1718.csv", datanot1718)
+# write_csv("data_train_111.csv", datanot1718)
 
 data1718 = []
 for user in ratings:
@@ -80,6 +81,6 @@ for user in ratings:
                 row += getdiract(imdb_id)
                 data1718.append(row)
                 break
-# write_csv("data1718.csv", data1718)
+# write_csv("data_test_111.csv", data1718)
 
 
