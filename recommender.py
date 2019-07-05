@@ -22,23 +22,24 @@ def reformat(data, features):
     data = data.drop(["title","userId","imdbRating","genres","directors","actors"],axis=1)
     return data
 
+# 1. Format the Data
 data = reformat(data, features)
 datatest = reformat(datatest, features)
-
-# Multiply features weight by User Rating
-for f in features:
-    data[f] *= data["userRating"]
 
 # see the result
 data.to_csv("train_matrix.csv", sep=',',encoding='utf-8', index=False)
 
-# Get User Profile
+# 2. Get User Profile
+# Multiply features weight by User Rating
+for f in features:
+    data[f] *= data["userRating"]
+
 sum_score = data.loc[:,"Comedy":].sum(axis=0)
 sum_ones = data.loc[:,"Comedy":].astype(bool).sum(axis=0) # total non zero value
-user_profile = sum_score / sum_ones
+user_profile = sum_score / sum_ones # averaging
 print(user_profile)
 
-# Scoring
+# 3. Scoring the Datatest
 datatest["value"] = 0.0
 for i in range(len(datatest)):
     datatest.loc[i,"Comedy":]*=user_profile
@@ -46,7 +47,7 @@ for i in range(len(datatest)):
 for index, row in datatest.iterrows():
     test_sum_score = datatest.loc[index,"Comedy":].sum()
     test_sum_ones = datatest.loc[index,"Comedy":].astype(bool).sum() # total non zero value
-    datatest.loc[index, "value"] = test_sum_score / test_sum_ones
+    datatest.loc[index, "value"] = test_sum_score / test_sum_ones # averaging
 
-# SAVE
+# Save the result
 datatest.loc[:,["imdbId", "userRating","value"]].to_csv("result.csv", sep=',',encoding='utf-8', index=False)
